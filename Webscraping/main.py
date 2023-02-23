@@ -10,7 +10,7 @@ url = "https://www.etf.com/etfanalytics/etf-finder"
 
 driver.get(url)
 
-time.sleep(10)
+time.sleep(5)
 
 botao_100 = driver.find_element("xpath", '''/html/body/div[5]/section/div/div[3]/section/div/div/div/div/
                                 div[2]/section[2]/div[2]/section[2]/div[1]/div/div[4]/button/label/span''')
@@ -75,7 +75,7 @@ for pagina in range(0, numero_paginas):
 
 base_de_dados_performance = pd.concat(lista_de_tabela_por_pagina)
 
-driver.quit()
+#driver.quit()
 
 base_de_dados_completa = base_de_dados_completa.set_index("Ticker")
 
@@ -89,4 +89,8 @@ base_de_dados_performance
 
 base_de_dados_final = base_de_dados_completa.join(base_de_dados_performance)
 
-print(base_de_dados_final)
+#df = pd.DataFrame(base_de_dados_final)
+
+base_de_dados_final.to_csv('base_dados.csv')
+
+input()
